@@ -36,7 +36,7 @@ jobs:
           echo test, and deploy your project.
 
         
-      - name: ls:
+      - name: ls
         run: ls ${{ github.workspace }}
         
       - name: compute shasum
