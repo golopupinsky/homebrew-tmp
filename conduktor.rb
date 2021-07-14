@@ -1,3 +1,4 @@
+cask "conduktor" do
   version "2.16.1"
   sha256 "b8bc5051529dd5f7a6ab0cd2811f0af896d50ecfd5adac4c829ff203a79e20d5"
 
@@ -11,9 +12,10 @@
   uninstall pkgutil: [
     "io.conduktor.app.Conduktor",
   ]
-
+  
   zap trash: [
     "~/Library/Application Support/conduktor",
     "~/Library/Saved Application State/io.conduktor.app.Conduktor.savedState",
   ]
+
 end
