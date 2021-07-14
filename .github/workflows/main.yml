@@ -40,4 +40,4 @@ jobs:
         run: ls ${{ github.workspace }}
         
       - name: compute shasum
-        run: shasum -a 256 ${{ github.workspace }}/Casks/conduktor-2.16.1.rb | head -c 65 
+        run: shasum -a 256 ${{ github.workspace }}/Casks/conduktor.rb | head -c 65 
