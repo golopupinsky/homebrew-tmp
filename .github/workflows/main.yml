@@ -22,13 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     
     outputs:
-      shasum: ${{ shasum }}
+      shasum: ${{ steps.shastep.outputs.sha }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-
       
       # Runs a single command using the runners shell
       - name: Run a one-line script
@@ -43,12 +42,12 @@ jobs:
       - name: ls
         run: ls ${{ github.workspace }}
         
-      - name: compute shasum
-        run: shasum -a 256 ${{ github.workspace }}/Casks/conduktor.rb | head -c 65 
 
-      - name: set output
-        run: echo "::set-output name=shasum::123"
-
-      
+      - id: shastep
+        name: set sha output
+        run: | 
+            SHA=shasum -a 256 ${{ github.workspace }}/Casks/conduktor.rb | head -c 65
+            echo "::set-output name=sha::$SHA"
+   
       - name: get output
         run: echo "SHA256 is ${{ outputs.shasum }}."
