@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     
     outputs:
-      shasum: ${{ steps.shastep.outputs.sha }}
+      sha: ${{ steps.shastep.outputs.sha }}
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -50,4 +50,4 @@ jobs:
             echo "::set-output name=sha::$SHA"
    
       - name: get output
-        run: echo "SHA256 is ${{ jobs.build.outputs.shasum }}."
+        run: echo "SHA256 is ${{ steps.shastep.outputs.sha }}."
