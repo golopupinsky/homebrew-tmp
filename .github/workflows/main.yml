@@ -50,4 +50,4 @@ jobs:
             echo "::set-output name=sha::$SHA"
    
       - name: get output
-        run: echo "SHA256 is ${{ outputs.shasum }}."
+        run: echo "SHA256 is ${{ jobs.build.outputs.shasum }}."
