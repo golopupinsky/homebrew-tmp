@@ -41,7 +41,6 @@ jobs:
 
       - name: ls
         run: ls ${{ github.workspace }}
-        
 
       - id: shastep
         name: set sha output
@@ -51,3 +50,16 @@ jobs:
    
       - name: get output
         run: echo "SHA256 is ${{ steps.shastep.outputs.sha }}."
+        
+        
+      - name: update the conductor tap
+        run: |
+            git clone https://github.com/golopupinsky/homebrew-tmp.git
+            cd homebrew-tmp/Casks/
+            awk -i inplace 'NR==2{print "  version \"2.16\""; next}1' conduktor.rb
+            awk -i inplace 'NR==3{print "  sha256 \"${{ steps.shastep.outputs.sha }}\""; next}1' conduktor.rb
+            git add conduktor.rb
+            git push
+
+            
+
