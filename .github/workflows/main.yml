@@ -46,7 +46,7 @@ jobs:
       - id: shastep
         name: set sha output
         run: | 
-            SHA=shasum -a 256 ${{ github.workspace }}/Casks/conduktor.rb | head -c 65
+            SHA=$(shasum -a 256 ${{ github.workspace }}/Casks/conduktor.rb | head -c 65)
             echo "::set-output name=sha::$SHA"
    
       - name: get output
