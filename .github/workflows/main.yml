@@ -53,6 +53,7 @@ jobs:
         
       - name: update the conductor tap
         run: |
+            ssh-add - <<< "${{ secrets.SECRET }}"
             git config --global user.email "golopupinsky@gmail.com"
             git config --global user.name "golopupinsky"
             git clone https://github.com/golopupinsky/homebrew-brew.git
@@ -62,8 +63,7 @@ jobs:
             awk -i inplace 'NR==3{print "  sha256 \"${{ steps.shastep.outputs.sha }}\""; next}1' conduktor.rb
             git add conduktor.rb
             git commit -m "Version bump"
-            git push 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@github.com:golopupinsky/homebrew-tmp.git
-
+            git push 
 #       - name: Push changes
 #         uses: ad-m/github-push-action@master
 #         with:
