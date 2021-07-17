@@ -51,7 +51,6 @@ jobs:
       - name: get output
         run: echo "SHA256 is ${{ steps.shastep.outputs.sha }}."
         
-        
       - name: update the conductor tap
         run: |
             git clone https://github.com/golopupinsky/homebrew-brew.git
