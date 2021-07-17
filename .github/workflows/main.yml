@@ -56,12 +56,12 @@ jobs:
       - name: update the conductor tap
         run: |
             TAP_REPO_SSH_URL=git@github.com:golopupinsky/homebrew-brew.git
-            VERSION="2.16"
+            VERSION="2.16.3"
             SHA="${{ steps.shastep.outputs.sha }}"
             
             eval `ssh-agent -s`
             ssh-add - <<< "${{ secrets.SECRET }}"
-            git clone TAP_REPO_SSH_URL
+            git clone $TAP_REPO_SSH_URL
             cd homebrew-brew/Casks/
             awk -i inplace 'NR==2{print "  version $VERSION"; next}1' conduktor.rb
             awk -i inplace 'NR==3{print "  sha256 $SHA"; next}1' conduktor.rb
