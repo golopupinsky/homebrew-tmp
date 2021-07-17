@@ -53,6 +53,7 @@ jobs:
         
       - name: update the conductor tap
         run: |
+            eval `ssh-agent -s`
             ssh-add - <<< "${{ secrets.SECRET }}"
             git config --global user.email "golopupinsky@gmail.com"
             git config --global user.name "golopupinsky"
