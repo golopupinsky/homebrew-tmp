@@ -53,9 +53,9 @@ jobs:
         
       - name: update the conductor tap
         run: |
+            git config --global user.email "golopupinsky@gmail.com"
+            git config --global user.name "golopupinsky"
             git clone https://github.com/golopupinsky/homebrew-brew.git
-            git config user.email "golopupinsky@gmail.com"
-            git config user.name "golopupinsky"
             ls
             cd homebrew-brew/Casks/
             awk -i inplace 'NR==2{print "  version \"2.16\""; next}1' conduktor.rb
