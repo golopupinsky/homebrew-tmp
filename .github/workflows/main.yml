@@ -54,7 +54,8 @@ jobs:
         
       - name: update the conductor tap
         run: |
-            git clone git@github.com:golopupinsky/homebrew-tmp.git
+            git remote set-url origin https://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@github.com/golopupinsky/homebrew-tmp.git
+            git pull
             cd homebrew-tmp/Casks/
             awk -i inplace 'NR==2{print "  version \"2.16\""; next}1' conduktor.rb
             awk -i inplace 'NR==3{print "  sha256 \"${{ steps.shastep.outputs.sha }}\""; next}1' conduktor.rb
