@@ -61,6 +61,8 @@ jobs:
             
             eval `ssh-agent -s`
             ssh-add - <<< "${{ secrets.SECRET }}"
+            git config --global user.email "golopupinsky@gmail.com"
+            git config --global user.name "golopupinsky"
             git clone $TAP_REPO_SSH_URL
             cd homebrew-brew/Casks/
             awk -i inplace 'NR==2{print "  version $VERSION"; next}1' conduktor.rb
