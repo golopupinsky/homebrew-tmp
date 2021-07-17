@@ -65,7 +65,7 @@ jobs:
             git config --global user.name "golopupinsky"
             git clone $TAP_REPO_SSH_URL
             cd homebrew-brew/Casks/
-            awk -i inplace 'NR==2{print "  version \"1232\""; next}1' conduktor.rb
+            awk -i inplace 'NR==2{print "  version \"123112\""; next}1' conduktor.rb
             awk -i inplace 'NR==3{print "  sha256 \"${{ steps.shastep.outputs.sha }}\""; next}1' conduktor.rb
             git add conduktor.rb
             git commit -m "Version updated to $VERSION"
@@ -80,9 +80,10 @@ jobs:
             eval `ssh-agent -s`
             ssh-add - <<< "${{ secrets.SECRET }}"
 
+            rm -rf homebrew-brew
             git clone $TAP_REPO_SSH_URL
             cd homebrew-brew/Casks/
-            awk -i inplace 'NR==2{print "  version \"1234\""; next}1' conduktor.rb
+            awk -i inplace 'NR==2{print "  version \"123466\""; next}1' conduktor.rb
             awk -i inplace 'NR==3{print "  sha256 \"${{ steps.shastep.outputs.sha }}\""; next}1' conduktor.rb
             git add conduktor.rb
             git commit -m "Version updated to $VERSION"
