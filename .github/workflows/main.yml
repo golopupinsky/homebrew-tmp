@@ -70,6 +70,24 @@ jobs:
             git add conduktor.rb
             git commit -m "Version updated to $VERSION"
             git push 
+            
+      - name: update the conductor tap again
+        run: |
+            TAP_REPO_SSH_URL=git@github.com:golopupinsky/homebrew-brew.git
+            VERSION=2.16.3
+            SHA=${{ steps.shastep.outputs.sha }}
+            
+            eval `ssh-agent -s`
+            ssh-add - <<< "${{ secrets.SECRET }}"
+
+            git clone $TAP_REPO_SSH_URL
+            cd homebrew-brew/Casks/
+            awk -i inplace 'NR==2{print "  version \"123\""; next}1' conduktor.rb
+            awk -i inplace 'NR==3{print "  sha256 \"${{ steps.shastep.outputs.sha }}\""; next}1' conduktor.rb
+            git add conduktor.rb
+            git commit -m "Version updated to $VERSION"
+            git push 
+
 #       - name: Push changes
 #         uses: ad-m/github-push-action@master
 #         with:
