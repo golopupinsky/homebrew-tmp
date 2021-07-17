@@ -63,7 +63,3 @@ jobs:
             git add conduktor.rb
             git commit -m "Version bump"
             git push https://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@github.com/golopupinsky/homebrew-brew.git
-
-
-            
-
