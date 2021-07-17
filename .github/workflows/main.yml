@@ -69,5 +69,6 @@ jobs:
           branch: "main"
           directory: "homebrew-brew"
           repository: "golopupinsky/homebrew-brew"
+          
 
             #git push https://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@github.com/golopupinsky/homebrew-brew.git
